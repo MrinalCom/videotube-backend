@@ -8,19 +8,19 @@ import { Test } from './models/test.model.js'
 const app = express()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors({
-//     origin: ['https://gokutube-frontend.vercel.app','https://gokutube.vercel.app',conf.corsOrigin],
-//     credentials: true,
-//     withCredentials: true,
-// }))
+app.use(cors({
+    origin: ['https://videotube-frontend-v1.vercel.app/','https://videotube-frontend-v1.vercel.app/',conf.corsOrigin],
+    credentials: true,
+    withCredentials: true,
+}))
 
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', 'https://gokutube.vercel.app'); // Replace with your frontend domain
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//     res.setHeader('Access-Control-Allow-Credentials', 'true');
-//     next();
-// });
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://videotube-frontend-v1.vercel.app'); // Replace with your frontend domain
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
 
 app.get("/", (req, res) => res.send("Running"));
 app.post("/test",(req,res)=>{
